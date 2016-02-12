@@ -1,5 +1,8 @@
 package org.alexg.mypage.linkshortener.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.alexg.mypage.linkshortener.dto.LinkDTO;
 import org.alexg.mypage.linkshortener.entities.LinkEntity;
 import org.alexg.mypage.linkshortener.repository.LinkRepository;
@@ -48,6 +51,18 @@ public class LinkServiceImpl implements LinkService {
 		
 		return savedLink;
 	}
+	
+	@Override
+	 @Transactional(readOnly = true)
+	public List<LinkDTO> findAll() {
+		 List<LinkEntity> foundLinks = linkRepository.findAll();
+		 List<LinkDTO> convertedLinks = new ArrayList<LinkDTO>();
+		 for(LinkEntity a : foundLinks){
+			 convertedLinks.add(LinkDTO.mapFromLinkEntity(a));
+		 }
+
+	 	return convertedLinks;
+	 }
 	
 	@Override
 	public String findUrlByHash(String hash) {

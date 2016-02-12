@@ -4,6 +4,8 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
+import java.util.List;
+
 import org.alexg.mypage.linkshortener.dto.LinkDTO;
 import org.alexg.mypage.linkshortener.service.LinkService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,13 @@ public class LinkController {
 	public LinkController(LinkService linkService) {
 		this.linkService = linkService;
 	}
+	
+	@RequestMapping(method = GET, produces = APPLICATION_JSON_VALUE)
+	 public ResponseEntity<List<LinkDTO>> findAll() {
+		 List<LinkDTO> links = linkService.findAll();
+	
+		return ResponseEntity.ok().body(links);
+	 }
 
 	
 	

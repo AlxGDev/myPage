@@ -8,6 +8,7 @@ import org.alexg.mypage.linkshortener.entities.LinkEntity;
 
 public interface LinkService {
   //List<LinkEntity> find(int offset, int limit);
+  List<LinkDTO> findAll();
 
   LinkDTO create(String url);
 
