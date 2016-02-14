@@ -60,6 +60,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+	        <groupId>net.sourceforge.nekohtml</groupId>
+	        <artifactId>nekohtml</artifactId>
+	        <version>1.9.20</version>
+	    </dependency>
+		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>angularjs</artifactId>
 			<version>1.5.0</version>
