@@ -15,14 +15,13 @@
 		  
 		  $http({
 			  method: 'POST',
-			  url: '/api/links?url='+url,
-			  headers: {
-				   'Content-Type': 'application/x-www-form-urlencoded'
-				 }
-			}).then(function successCallback(response) {
-				return deferred.resolve(response.link);
-			  }, function errorCallback(response) {
-				NotificationService.add(response.error.message, 'error');
+			  url: '/api/links',
+			  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+			  data: 'url='+url
+			}).then(function successCallback(link) {
+				return deferred.resolve(link);
+			  }, function errorCallback(error) {
+				NotificationService.add(error.message, 'error');
 			  });
 
           /*$http.post('/api/links?url='+url)
