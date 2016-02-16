@@ -37,7 +37,8 @@ public class LinkServiceImpl implements LinkService {
 		logger.debug("Request to shorten: {}", url);
 		LinkEntity resultLink;
 		
-		boolean isSafeUrl = true; //urlVerifiers.isSafe(url);
+		//boolean isSafeUrl = true; 
+		boolean isSafeUrl = urlVerifiers.isSafe(url);
 	    if (isSafeUrl) {
 	      LinkEntity existingLink = linkRepository.findByUrl(url);
 	      if (existingLink != null) {
